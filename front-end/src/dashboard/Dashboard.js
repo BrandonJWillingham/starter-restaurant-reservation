@@ -23,6 +23,8 @@ function Dashboard({ date }) {
     return () => abortController.abort();
   }
 
+  
+
   return (
     <main>
       <h1>Dashboard</h1>
@@ -30,7 +32,7 @@ function Dashboard({ date }) {
         <h4 className="mb-0">Reservations for date</h4>
       </div>
       <ErrorAlert error={reservationsError} />
-      {JSON.stringify(reservations)}
+      {JSON.stringify(reservations).reservations ? JSON.stringify(reservations) : ""}
     </main>
   );
 }
