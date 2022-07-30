@@ -1,7 +1,8 @@
 import React,{useState} from "react";
+import { createReservation } from "../utils/api";
 import "./NewReservations.css"
 
-export default function(){
+export default function NewReservations(){
 
     const initalFormState = {
         first_name: "",
@@ -20,10 +21,8 @@ export default function(){
 
     const onSubmit = async (event) =>{
         event.preventDefault()
-        const response = await fetch("",{
-            method: "PUT",
-            body: JSON.stringify(FormData)
-        });
+        createReservation(formData)
+            // .then(()=>history.push)
     }
 
     return (
@@ -46,9 +45,11 @@ export default function(){
                 <label htmlFor="reservation_time">
                     Time of Reservation
                 </label>
-                <label htmlFor="party">
+                <label htmlFor="people">
                     Party Size
+                    <input id="people" name="people" type="number" onChange={onChange} value={formData.people}/>
                 </label>
+                <button onClick={onSubmit}> Submit</button>
             </form> 
     )
 }

@@ -4,6 +4,7 @@
  */
 import formatReservationDate from "./format-reservation-date";
 import formatReservationTime from "./format-reservation-date";
+import {today} from "./date-time"
 
 const API_BASE_URL =
   process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
@@ -30,6 +31,7 @@ headers.append("Content-Type", "application/json");
  *  If the response is not in the 200 - 399 range the promise is rejected.
  */
 async function fetchJson(url, options, onCancel) {
+  console.log(url)
   try {
     const response = await fetch(url, options);
 
@@ -62,8 +64,23 @@ export async function listReservations(params, signal) {
   const url = new URL(`${API_BASE_URL}/reservations`);
   Object.entries(params).forEach(([key, value]) =>
     url.searchParams.append(key, value.toString())
+   
   );
+  
   return await fetchJson(url, { headers, signal }, [])
     .then(formatReservationDate)
     .then(formatReservationTime);
+}
+
+export async function createReservation(reservation,signal){
+  const url = `${API_BASE_URL}/reservations`
+  reservation.reservation_date = today();
+  reservation.reservation_time = today();
+  const options = {
+    method:"POST",
+    headers,
+    body: JSON.stringify({ data: reservation}),
+    signal
+  }
+  return await fetchJson(url,options)
 }
