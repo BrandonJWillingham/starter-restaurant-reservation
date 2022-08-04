@@ -2,8 +2,14 @@ import React,{useState} from "react";
 import { createReservation } from "../utils/api";
 import "./NewReservations.css"
 
-export default function NewReservations(){
+export default function NewReservations({overlay}){
 
+    console.log(overlay)
+
+    const handleOpen = () =>{
+        
+        overlay.setAttribute("style","display:flex")
+    }
     const initalFormState = {
         first_name: "",
         last_name: "",
@@ -50,13 +56,12 @@ export default function NewReservations(){
                 </div>
 
                 <div>
-                    <button className="Reservation_date">
+                    <i className="Reservation_date" onClick={handleOpen}>
                         <label htmlFor="reservation_date">
-                            <p>Date</p> 
                             <div>Today</div>
                         </label>
                         
-                    </button>
+                    </i>
                 </div>
 
                 <div>    
