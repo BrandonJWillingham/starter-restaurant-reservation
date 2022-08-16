@@ -1,0 +1,25 @@
+.bookOut{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    
+}
+
+.ReservationCss{
+    display: flex;
+    /* justify-content: center; */
+    /* flex-direction: column; */
+}
+
+.top{
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    /* align-self: center; */
+}
+
+.bottom{
+    align-content: center;
+}

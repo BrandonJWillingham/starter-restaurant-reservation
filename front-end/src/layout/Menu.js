@@ -46,6 +46,13 @@ function Menu() {
               &nbsp;New Table
             </Link>
           </li>
+
+          <li>
+            <Link className="nav-item" to="/all">
+              <span className="oi oi-list"/>
+              &nbsp;All
+            </Link>
+          </li>
         </ul>
         <div className="text-center d-none d-md-inline">
           <button
