@@ -1,9 +1,13 @@
 import React,{useState} from "react";
 import { createReservation } from "../utils/api";
 import "./NewReservations.css"
+import "./formFields.css"
+import {today} from "../utils/date-time"
 
-export default function NewReservations({overlay}){
+export default function NewReservations({overlay, date}){
 
+    const td = today()
+    
     console.log(overlay)
 
     const handleOpen = () =>{
@@ -34,23 +38,28 @@ export default function NewReservations({overlay}){
     return (
         <div>
             <form>  
-                <div>
-                    <label htmlFor="first_name">
-                        Your First Name
-                        <input  id="first_name" name="first_name" type="text"  onChange={onChange} value={formData.first_name} />
-                    </label>
+
+                <div className="name_fields">
+                    <div>
+                        <label htmlFor="first_name">
+                            Your First Name
+                            <input  id="first_name" name="first_name" type="text"  onChange={onChange} value={formData.first_name} />
+                        </label>
+                    </div>
+
+                    <div>
+                        <label htmlFor="last_name">
+                            Your Last Name
+                            <input id="last_name" name="last_name" type="text" onChange={onChange} value={formData.last_name} />
+                        </label>
+                    </div>
+
                 </div>
 
-                <div>
-                    <label htmlFor="last_name">
-                        Your Last Name
-                        <input id="last_name" name="last_name" type="text" onChange={onChange} value={formData.last_name} />
-                    </label>
-                </div>
 
                 <div>
                     <label htmlFor="mobile_number">
-                        Your Phone Number
+                        Mobile Number
                         <input id="mobile_number" name="mobile_number" type="number" onChange={onChange} value={formData.mobile_number} />
                     </label>
                 </div>
@@ -58,7 +67,9 @@ export default function NewReservations({overlay}){
                 <div>
                     <i className="Reservation_date" onClick={handleOpen}>
                         <label htmlFor="reservation_date">
-                            <div>Today</div>
+                            <div> Date
+                            <> {date == td ? td: date}</>
+                            </div>
                         </label>
                         
                     </i>

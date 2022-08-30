@@ -2,7 +2,9 @@ import React from "react";
 import "./Calendar.css"
 import {AiOutlineClose} from "react-icons/ai"
 
-export default function Calendar ({date}){
+export default function Calendar ({date,setDate}){
+
+    
     
     const nextDate = nextMonth(date)
     let currentMonth = numberOfDays(date)
@@ -128,7 +130,8 @@ function generateRows(num,start){
         }
         i++
         num = num - 1
-        days.push(<td key={generateKey()}><button onClick={handleClick(i)} className="calendarDays">{i}</button></td>)
+        let key = generateKey()
+        days.push(<td key={key}><button onClick={key} className="calendarDays">{i}</button></td>)
         if((i + j)%7 === 0){
             rows.push(<tr key={generateKey()}>{days}</tr>)
             days = []
@@ -151,5 +154,7 @@ function handleClose(){
 }
 
 function handleClick(day){
+
+    console.log("hello")
 
 }

@@ -34,7 +34,6 @@ function Dashboard({ date }) {
       </div>
       <ErrorAlert error={reservationsError} />
      <div>
-      {/* {reservations.map(r => <h2 key={Math.floor(Math.random()*200)}>{r.reservation_date}</h2>)} */}
       {reservations.map(r => <Reservation r={r} />)}
      </div>
 
