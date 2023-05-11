@@ -10,10 +10,6 @@ export default function NewReservations({overlay, date}){
     
     console.log(overlay)
 
-    const handleOpen = () =>{
-        
-        overlay.setAttribute("style","display:flex")
-    }
     const initalFormState = {
         first_name: "",
         last_name: "",
@@ -65,21 +61,18 @@ export default function NewReservations({overlay, date}){
                 </div>
 
                 <div>
-                    <i className="Reservation_date" onClick={handleOpen}>
-                        <label htmlFor="reservation_date">
-                            <div> Date
-                            <> {date == td ? td: date}</>
-                            </div>
-                        </label>
-                        
-                    </i>
+                    <label htmlFor="reservation_date">
+                        Date
+                        <input id="reservation_date" name="reservation_date" type="date" onChange={onChange} value={formData.reservation_date}/>
+                    </label>
                 </div>
 
-                <div>    
+                <div>
                     <label htmlFor="reservation_time">
-                        Time of Reservation
+                        Time
+                        <input id="reservation_time" name="reservation_time" type="time" onChange={onChange} value={formData.reservation_time}/>
                     </label>
-                </div> 
+                </div>
 
                 <div>
                     <label htmlFor="people">
