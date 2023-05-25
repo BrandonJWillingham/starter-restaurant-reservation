@@ -3,6 +3,9 @@ import { createReservation } from "../utils/api";
 import "./NewReservations.css"
 import "./formFields.css"
 import {today} from "../utils/date-time"
+import {useHistory} from "react-router-dom"
+
+const history = useHistory;
 
 export default function NewReservations({overlay, date}){
 
@@ -14,6 +17,7 @@ export default function NewReservations({overlay, date}){
         first_name: "",
         last_name: "",
         mobile_number: "",
+        people: 0
     }
 
     const [formData,setFormData] = useState({...initalFormState})
@@ -28,7 +32,7 @@ export default function NewReservations({overlay, date}){
     const onSubmit = async (event) =>{
         event.preventDefault()
         createReservation(formData)
-            // .then(()=>history.push)
+            .then(()=>history.push("../"))
     }
 
     return (
@@ -78,6 +82,7 @@ export default function NewReservations({overlay, date}){
                     <label htmlFor="people">
                         <div>Party Size: </div>
                         <select id="people" name="people" type="" onChange={onChange} value={formData.people}>
+                            <option value="0" label="0 Guest"/>
                             <option value="1" label="1 Guest"/>
                             <option value="2" label="2 Guests"/>
                             <option value="3" label="3 Guests"/>

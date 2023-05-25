@@ -10,6 +10,17 @@ async function list(req, res) {
     data: data,
   });
 }
+async function read(req,res){
+  console.log("called")
+  const data = await service.read(req.params.id)
+  res.json({
+    data: data[0],
+  })
+}
+async function destroy(req,res){
+  console.log("called", req.params.id)
+  await service.destroy(req.params.id)
+}
 
 function hasNonNullables(req,res,next){
   const {data:{result}= {}} = req.body
@@ -31,6 +42,7 @@ function hasNonNullables(req,res,next){
 }
 
 async function create(req,res, next){
+  console.log("create called")
   const {data = {}} = req.body;
   console.log(data)
   const newReservaiton = await service.create(req.body.data)
@@ -39,6 +51,8 @@ async function create(req,res, next){
 
 module.exports = {
   list,
-  // create: [hasNonNullables,create]
+  destroy,
+  // create: [hasNonNullables,create],
   create,
+  read,
 };

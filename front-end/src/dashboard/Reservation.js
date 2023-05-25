@@ -1,26 +1,30 @@
 import React from "react";
 import "./Reservation.css"
-
-export default function Reservation({r}){
-
-
-
-
-    return(
-        <div className="ReservationCss">
+import { deleteReservation } from "../utils/api";
+export default function Reservation({r,date}){
+    // if(r.reservation_date != date) return<></>;
+  return(
+        <div className="ReservationCss" key={Math.random() * 1000}>
             <div className="bookOut">
                 <div className="top">
-                    {r.first_name + " " +r.last_name } 
-                    <span className="oi oi-circle-x" onClick={handleClick()}/>
+                    {r.first_name + " " +r.last_name + " "+ "size: "+ r.people} 
+                    <button className="oi oi-circle-x" onClick={handleClick} id={r.reservation_id}>
+                        Delete
+                    </button>
                 </div>
                 <div className="bottom">
-                    {r. reservation_time}
+                    {r.reservation_time}
+                    {"   " + r.reservation_date}
                 </div>
             </div>
         </div>
     )
 }
 
-function handleClick(){
-    console.log("clicked")
+
+async function handleClick(event){
+    event.preventDefault();
+    console.log(event.target.id)
+    deleteReservation(event.target.id)
+    
 }

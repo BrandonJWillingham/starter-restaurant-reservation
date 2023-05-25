@@ -31,9 +31,10 @@ headers.append("Content-Type", "application/json");
  *  If the response is not in the 200 - 399 range the promise is rejected.
  */
 async function fetchJson(url, options, onCancel) {
-  console.log(url)
+
   try {
-    const response = await fetch(url, options);
+    console.log(url,options)
+    let response = await fetch(url, options);
 
     if (response.status === 204) {
       return null;
@@ -73,7 +74,7 @@ export async function listReservations(params, signal) {
 }
 
 export async function createReservation(reservation,signal){
-  const url = `${API_BASE_URL}/reservations`
+  const url = `${API_BASE_URL}/reservations/`
   reservation.reservation_date = today();
   reservation.reservation_time = today();
   const options = {
@@ -82,5 +83,12 @@ export async function createReservation(reservation,signal){
     body: JSON.stringify({ data: reservation}),
     signal
   }
+  console.log("api called with url: ", url)
   return await fetchJson(url,options)
+}
+
+export async function deleteReservation(reservationId){
+  const url = `${API_BASE_URL}/reservations/${reservationId}`;
+  console.log("api called with url: ", url)
+  const response = await fetch(url,({method: "DELETE", headers: {"Content-type":'application/json'}}));
 }

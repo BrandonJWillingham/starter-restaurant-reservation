@@ -15,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/reservations", reservationsRouter);
+app.use("/reservations/:id/", reservationsRouter);
 
 app.use(notFound);
 app.use(errorHandler);
