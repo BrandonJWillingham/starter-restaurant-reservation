@@ -3,6 +3,7 @@ import { listReservations } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 import Reservation from "./Reservation";
 import sortByDate from "../utils/sortByDate";
+import { today } from "../utils/date-time";
 
 
 /**
@@ -11,9 +12,21 @@ import sortByDate from "../utils/sortByDate";
  *  the date for which the user wants to view reservations.
  * @returns {JSX.Element}
  */
-function Dashboard({ date }) {
+function Dashboard() {
+  let date;
+  const queryParams = new URLSearchParams(window.location.search).get("date")
+  console.log(queryParams)
+  if(!queryParams){
+    date = today()
+  } else{
+    date = queryParams
+  }
+  
+
   const [reservations, setReservations] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);
+
+ 
 
   useEffect(loadDashboard, [date]);
 
@@ -37,7 +50,7 @@ function Dashboard({ date }) {
 
       <ErrorAlert error={reservationsError} />
      <div>
-      {reservations.map(r => <Reservation r={r} date={date} />)}
+      {reservations.map((r,key) => <Reservation r={r} date={date} key={key} />)}
      </div>
 
     </main>
