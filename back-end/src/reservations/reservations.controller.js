@@ -5,7 +5,8 @@ const reservations = require("../db/seeds/00-reservations.json")
 const service = require("./reservation.service")
 
 async function list(req, res) {
-  const data = await service.list()
+  console.log(req.query.date)
+  const data = await service.list(req.query.date)
   res.json({
     data: data,
   });

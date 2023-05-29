@@ -5,34 +5,45 @@ import "./formFields.css"
 import {today} from "../utils/date-time"
 import {useHistory} from "react-router-dom"
 
-const history = useHistory;
-
 export default function NewReservations({overlay, date}){
-
+    const history = useHistory();
     const td = today()
     
-    console.log(overlay)
+
 
     const initalFormState = {
         first_name: "",
         last_name: "",
         mobile_number: "",
-        people: 0
+        people: 1
     }
 
     const [formData,setFormData] = useState({...initalFormState})
 
     const onChange = ({target}) => {
+        console.log(formData)
         setFormData({
             ...formData,
             [target.name]: target.value
         })
     }
 
+    const onCancel = async(event)=>{
+        event.preventDefault();
+        history.goBack();
+    }
+
     const onSubmit = async (event) =>{
+        console.log("submitting", formData)
         event.preventDefault()
+
+        const d = new Date (formData.reservation_date)
+        const day = d.getDay()
+        if(day = 2){
+            
+        }
         createReservation(formData)
-            .then(()=>history.push("../"))
+            .then(()=>history.push(`/dashboard?date=${formData.reservation_date}`))
     }
 
     return (
@@ -82,7 +93,6 @@ export default function NewReservations({overlay, date}){
                     <label htmlFor="people">
                         <div>Party Size: </div>
                         <select id="people" name="people" type="" onChange={onChange} value={formData.people}>
-                            <option value="0" label="0 Guest"/>
                             <option value="1" label="1 Guest"/>
                             <option value="2" label="2 Guests"/>
                             <option value="3" label="3 Guests"/>
@@ -95,6 +105,7 @@ export default function NewReservations({overlay, date}){
                 </div>
                 
                 <button onClick={onSubmit}> Submit</button>
+                <button onClick={onCancel}> Cancel </button>
             </form> 
         </div>
     )

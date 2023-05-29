@@ -26,5 +26,5 @@ async function handleClick(event){
     event.preventDefault();
     console.log(event.target.id)
     deleteReservation(event.target.id)
-    
+    window.location.reload()
 }

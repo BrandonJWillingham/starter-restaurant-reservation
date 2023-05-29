@@ -15,7 +15,7 @@ import { today } from "../utils/date-time";
 function Dashboard() {
   let date;
   const queryParams = new URLSearchParams(window.location.search).get("date")
-  console.log(queryParams)
+  // console.log(queryParams)
   if(!queryParams){
     date = today()
   } else{
