@@ -1,24 +1,18 @@
 import React, { useEffect,useState } from "react";
 import FormFields from "./FormFields";
-import Calendar from "./Calendar"
+import ErrorAlert from "../layout/ErrorAlert";
 import "./newReservation.css"
-import { today } from "../utils/date-time";
 
 export default function NewReservation({date}){
-    const [overlay,setOverlay] = useState()
-    const [inquiringDate, setInquiringDate] = useState("")
-    useEffect(()=>{
-        let getOverlay = document.querySelector(".overlay")
-        setOverlay(getOverlay)
-    },[])
 
+    const [inquiringDate, setInquiringDate] = useState("")
+    const [errors,setErrors] = useState({message:"",date:""})
     
     return(
         <main>
-            <FormFields overlay={overlay} date ={inquiringDate}/>
-            <div className="overlay">
-                <Calendar date={today()} setDate = {setInquiringDate} />
-            </div>
+            {errors.message ? <ErrorAlert error={errors}/> : "" }
+            <FormFields setErrors ={setErrors} errors ={errors}/>
         </main>
     )
+    
 }

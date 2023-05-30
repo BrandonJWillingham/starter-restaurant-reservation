@@ -31,9 +31,8 @@ headers.append("Content-Type", "application/json");
  *  If the response is not in the 200 - 399 range the promise is rejected.
  */
 async function fetchJson(url, options, onCancel) {
-
+  console.log("called fetchJson")
   try {
-    
     let response = await fetch(url, options);
 
     if (response.status === 204) {
@@ -82,6 +81,7 @@ export async function createReservation(reservation,signal){
     signal
   }
   console.log("api called with url: ", url)
+  
   return await fetchJson(url,options)
 }
 

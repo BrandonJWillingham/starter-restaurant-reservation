@@ -4,9 +4,11 @@ import "./NewReservations.css"
 import "./formFields.css"
 import {today} from "../utils/date-time"
 import {useHistory} from "react-router-dom"
+import ErrorAlert from "../layout/ErrorAlert";
 
-export default function NewReservations({overlay, date}){
+export default function NewReservations({setErrors,errors}){
     const history = useHistory();
+    let catching = {message: "", time: "",date: ""};
     const td = today()
     
 
@@ -15,7 +17,9 @@ export default function NewReservations({overlay, date}){
         first_name: "",
         last_name: "",
         mobile_number: "",
-        people: 1
+        people: 1,
+        reservation_date:"",
+        reservation_time:"",
     }
 
     const [formData,setFormData] = useState({...initalFormState})
@@ -34,18 +38,38 @@ export default function NewReservations({overlay, date}){
     }
 
     const onSubmit = async (event) =>{
-        console.log("submitting", formData)
+
+        setErrors({
+            ... errors,
+            message: ""
+        })
+
         event.preventDefault()
+        const dateAndTime = formData.reservation_date + "T" + formData.reservation_time
 
-        const d = new Date (formData.reservation_date)
-        const day = d.getDay()
-        if(day = 2){
-            
-        }
-        createReservation(formData)
+        let d = new Date(dateAndTime)
+        let day = d.getDay()
+        let today = new Date()
+
+        // console.log("today : ", today.a(), " d: ", d.valueOf())
+
+
+        if(day == 2){
+            setErrors({
+                ...errors,
+                message: "Closed on Tuesdays"
+            })
+        }else if(today.valueOf() > d.valueOf()){
+            setErrors({
+                ...errors,
+                message:"Only future reservations are allowed"
+            })
+        } else{
+            createReservation(formData)
             .then(()=>history.push(`/dashboard?date=${formData.reservation_date}`))
+        }
     }
-
+    console.log(catching.message)
     return (
         <div>
             <form>  
