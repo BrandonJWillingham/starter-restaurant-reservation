@@ -31,7 +31,7 @@ headers.append("Content-Type", "application/json");
  *  If the response is not in the 200 - 399 range the promise is rejected.
  */
 async function fetchJson(url, options, onCancel) {
-  console.log("called fetchJson")
+  // console.log("called fetchJson")
   try {
     let response = await fetch(url, options);
 
@@ -61,12 +61,12 @@ async function fetchJson(url, options, onCancel) {
  */
 
 export async function listReservations(params, signal) {
-  console.log(params)
+  // console.log(params)
   const url = new URL(`${API_BASE_URL}/reservations`);
   Object.entries(params).forEach(([key, value]) =>
     url.searchParams.append(key, value.toString())
   );
-  console.log(url)
+  // console.log(url)
   return await fetchJson(url, { headers, signal }, [])
     .then(formatReservationDate)
     .then(formatReservationTime);
@@ -80,13 +80,44 @@ export async function createReservation(reservation,signal){
     body: JSON.stringify({ data: reservation}),
     signal
   }
-  console.log("api called with url: ", url)
+  // console.log("api called with url: ", url)
   
+  return await fetchJson(url,options)
+}
+
+export async function createTable(table,signal){
+  const url = `${API_BASE_URL}/tables/`
+  const options = {
+    method:"POST",
+    headers,
+    body: JSON.stringify({ data: table}),
+    signal
+  }
+
   return await fetchJson(url,options)
 }
 
 export async function deleteReservation(reservationId){
   const url = `${API_BASE_URL}/reservations/${reservationId}`;
-  console.log("api called with url: ", url)
+  // console.log("api called with url: ", url)
   const response = await fetch(url,({method: "DELETE", headers: {"Content-type":'application/json'}}));
 }
+export async function listTables(signal){
+  const url = `${API_BASE_URL}/tables/`
+  return await fetchJson(url, { headers, signal }, [])
+}
+export async function readReservation(reservationId, signal){
+  const url = `${API_BASE_URL}/reservations/${reservationId}`
+  return await fetchJson(url, {headers,signal})
+}
+
+export async function setTable(table_id,reservation_id){
+  console.log("api", table_id)
+  const url = `${API_BASE_URL}/tables/${table_id}/seat/`
+  await fetchJson(url,({method:"PUT", headers,body:JSON.stringify({data: reservation_id})}) )
+}
+
+// export async function cleanTable(table_id){
+//   const url=`${API_BASE_URL}/tables/${table_id}`;
+
+// }

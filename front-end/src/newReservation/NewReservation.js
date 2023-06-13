@@ -1,11 +1,9 @@
-import React, { useEffect,useState } from "react";
+import React, {useState } from "react";
 import FormFields from "./FormFields";
 import ErrorAlert from "../layout/ErrorAlert";
 import "./newReservation.css"
 
 export default function NewReservation({date}){
-
-    const [inquiringDate, setInquiringDate] = useState("")
     const [errors,setErrors] = useState({message:"",date:""})
     
     return(

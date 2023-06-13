@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { listReservations } from "../utils/api";
+import { listReservations,listTables } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 import Reservation from "./Reservation";
+import Table from "./Tables";
 import sortByDate from "../utils/sortByDate";
 import { today } from "../utils/date-time";
+import "./Dashboard.css"
 
 
 /**
@@ -15,19 +17,16 @@ import { today } from "../utils/date-time";
 function Dashboard() {
   let date;
   const queryParams = new URLSearchParams(window.location.search).get("date")
-  // console.log(queryParams)
   if(!queryParams){
     date = today()
   } else{
     date = queryParams
   }
   
-
+  const [tables,setTables] = useState([])
+  const [tablesError,setTablesError] = useState(null)
   const [reservations, setReservations] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);
-
- 
-
   useEffect(loadDashboard, [date]);
 
   function loadDashboard() {
@@ -37,8 +36,13 @@ function Dashboard() {
       .then(response => sortByDate(response,compare))
       .then(setReservations)
       .catch(setReservationsError);
+    listTables(abortController.signal)
+      .then(response => sortByDate(response,compareTable))
+      .then(setTables)
+      .catch(setTablesError)
     return () => abortController.abort();
   }
+
   return (
     <main>
       <h1>Dashboard</h1>
@@ -49,8 +53,21 @@ function Dashboard() {
       </div>
 
       <ErrorAlert error={reservationsError} />
-     <div>
-      {reservations.map((r,key) => <Reservation r={r} date={date} key={key} />)}
+      <ErrorAlert error={tablesError}/>
+     <div className="Res_Table_div">
+      
+      <div>
+        <h3>
+          Reservations
+        </h3>
+        {reservations.map((r,key) => <Reservation r={r} date={date} key={key} />)}
+      </div>
+      <div>
+        <h3>
+          Tables:
+        </h3>
+        {tables.map((table,key)=> <Table table={table} key={key} />)}
+      </div>
      </div>
 
     </main>
@@ -81,5 +98,25 @@ function compare(left,right){
   } else {
      return 1
   }
+}
+
+function compareTable(left,right){
+  const leftName = left.table_name;
+  const rightName = right.table_name;
+  let shortestLength = rightName.length
+  if(leftName.length < shortestLength){
+    shortestLength = leftName.length
+  }
+
+  for(let i=0;i<shortestLength;i++){
+    if( leftName[i] !== rightName[i] ){
+      return leftName[i].charCodeAt(0) - rightName[i].charCodeAt(0);
+    } else if(!rightName[i]){
+      return -1
+    } else if(!leftName[i]){
+      return 1
+    } 
+  }
+  return 1
 }
 export default Dashboard;

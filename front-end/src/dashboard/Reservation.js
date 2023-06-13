@@ -2,7 +2,7 @@ import React from "react";
 import "./Reservation.css"
 import { deleteReservation } from "../utils/api";
 export default function Reservation({r,date}){
-    // if(r.reservation_date != date) return<></>;
+
   return(
         <div className="ReservationCss" key={Math.random() * 1000}>
             <div className="bookOut">
@@ -15,6 +15,11 @@ export default function Reservation({r,date}){
                 <div className="bottom">
                     {r.reservation_time}
                     {"   " + r.reservation_date}
+                    <button>
+                        <a href={`/reservations/${r.reservation_id}/seat`}>
+                            Seat
+                        </a>
+                    </button>
                 </div>
             </div>
         </div>

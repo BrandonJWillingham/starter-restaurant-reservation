@@ -1,0 +1,5 @@
+.Res_Table_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -1,5 +1,5 @@
 export default function sortByDate(reservations, compareDate){
-
+    // console.log(reservations)
     if(Array.isArray(reservations)){
         if(reservations.length <= 1){
             return reservations
@@ -20,7 +20,8 @@ export default function sortByDate(reservations, compareDate){
 
         return merge(compareDate, leftSorted, rightSorted)
     }
-
+    
+    console.log(reservations)
     return reservations
 }
 

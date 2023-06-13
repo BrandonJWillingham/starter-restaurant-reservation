@@ -25,7 +25,6 @@ export default function NewReservations({setErrors,errors}){
     const [formData,setFormData] = useState({...initalFormState})
 
     const onChange = ({target}) => {
-        console.log(formData)
         setFormData({
             ...formData,
             [target.name]: target.value
