@@ -117,7 +117,9 @@ export async function setTable(table_id,reservation_id){
   await fetchJson(url,({method:"PUT", headers,body:JSON.stringify({data: reservation_id})}) )
 }
 
-// export async function cleanTable(table_id){
-//   const url=`${API_BASE_URL}/tables/${table_id}`;
-
-// }
+export async function listMatchedReservations(queryParams){
+  const url= `${API_BASE_URL}/reservations`
+  const response =  await fetchJson(url,{headers})
+  const matched = response.filter( (res) =>{ return res.mobile_number == queryParams})
+  return matched
+}

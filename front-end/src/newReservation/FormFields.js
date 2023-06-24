@@ -3,11 +3,11 @@ import { createReservation } from "../utils/api";
 import "./NewReservations.css"
 import "./formFields.css"
 import {today} from "../utils/date-time"
-import {useHistory} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import ErrorAlert from "../layout/ErrorAlert";
 
 export default function NewReservations({setErrors,errors}){
-    const history = useHistory();
+    const navigate = useNavigate();
     let catching = {message: "", time: "",date: ""};
     const td = today()
     
@@ -33,7 +33,7 @@ export default function NewReservations({setErrors,errors}){
 
     const onCancel = async(event)=>{
         event.preventDefault();
-        history.goBack();
+        navigate(-1);
     }
 
     const onSubmit = async (event) =>{
@@ -65,7 +65,7 @@ export default function NewReservations({setErrors,errors}){
             })
         } else{
             createReservation(formData)
-            .then(()=>history.push(`/dashboard?date=${formData.reservation_date}`))
+            .then(()=>navigate(`/dashboard?date=${formData.reservation_date}`))
         }
     }
     console.log(catching.message)

@@ -1,10 +1,10 @@
 import React from "react"
 import { useState } from "react"
 import { createTable } from "../utils/api"
-import {useHistory} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 export default function Table(){
-    const history = useHistory();
+    const navigate = useNavigate();
     const initializer = {
         table_name : "",
         capacity:"",
@@ -13,11 +13,11 @@ export default function Table(){
     const handleSubmit = async (event)=>{
         event.preventDefault()
         createTable(forms)
-        history.push("/dashboard")
+        navigate("/dashboard")
     }
     const handleCancel = (event)=>{
         event.preventDefault()
-        history.goBack()
+        navigate(-1)
     }
     const handleChange = ({target})=>{
         setForms({

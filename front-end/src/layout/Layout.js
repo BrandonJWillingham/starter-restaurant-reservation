@@ -1,6 +1,7 @@
 import React from "react";
 import Menu from "./Menu";
-import Routes from "./Routes";
+import Switch from "./Routes";
+import { Route,Routes } from "react-router-dom";
 
 import "./Layout.css";
 
@@ -19,7 +20,8 @@ function Layout() {
           <Menu />
         </div>
         <div className="col">
-          <Routes />
+            <Switch />
+           
         </div>
       </div>
     </div>

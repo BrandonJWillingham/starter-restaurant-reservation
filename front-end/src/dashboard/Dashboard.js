@@ -60,7 +60,7 @@ function Dashboard() {
         <h3>
           Reservations
         </h3>
-        {reservations.map((r,key) => <Reservation r={r} date={date} key={key} />)}
+        {reservations.map((r,key) => <Reservation r={r} tables={tables} key={key} />)}
       </div>
       <div>
         <h3>

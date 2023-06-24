@@ -12,10 +12,14 @@ function destroy(id){
 function read(id){
     return knex("reservations").where("reservation_id", id);
 }
+function listAll(){
+    return knex("reservations")
+}
 
 module.exports = {
     create,
     list,
     destroy,
     read,
+    listAll,
 }

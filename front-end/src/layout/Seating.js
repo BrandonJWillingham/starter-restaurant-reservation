@@ -2,16 +2,15 @@ import React,{useEffect} from "react"
 import { useState } from "react"
 import {readReservation, listTables } from "../utils/api";
 import sortByDate from "../utils/sortByDate";
-import {useHistory, useParams} from "react-router-dom"
+import { useParams, useNavigate} from "react-router-dom"
 import { setTable } from "../utils/api";
 
 export default function Seating(){
   const {reservation_id} = useParams()
-  const history = useHistory();
+  const navigate = useNavigate()
   useEffect(loadDashboard, []);
 
   const [tables,setTables] = useState([])
-  // const [form,setFrom] = useState({})
   const [reservation, setReservation] = useState({})
   const [tablesError,setTablesError] = useState(null)
 
@@ -23,7 +22,6 @@ export default function Seating(){
           .catch(setTablesError)
         readReservation(reservation_id,abortController.signal)
           .then(response => setReservation(response))
-          .then(console.log(reservation))
         return () => abortController.abort();
     }
 
@@ -31,16 +29,16 @@ export default function Seating(){
 
     const handleSubmit = async (event)=>{
       event.preventDefault()
+      const date = reservation.reservation_date;
       const table_id = document.getElementById("table_id").value
       console.log(table_id,reservation_id)
       setTable(table_id,reservation_id)
-      history.goBack()
-      window.location.reload()
+      navigate(`/dashboard?date=${date}`)
     }
     const handleCancel = (event)=>{
-      
+    
         event.preventDefault()
-        history.goBack()
+        navigate(-1)
     }
 
     let makeList = (table)=>{

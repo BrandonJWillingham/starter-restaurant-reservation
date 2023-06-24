@@ -6,10 +6,19 @@ const service = require("./reservation.service")
 
 async function list(req, res) {
   console.log(req.query.date)
-  const data = await service.list(req.query.date)
+  let data;
+  if(!req.query.date){
+    console.log("called with no date")
+     data = await service.listAll()
+  } else{
+    console.log("called with date")
+     data = await service.list(req.query.date)
+  }
+  
   res.json({
     data: data,
   });
+
 }
 async function read(req,res){
   console.log("called")

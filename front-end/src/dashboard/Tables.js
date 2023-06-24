@@ -1,12 +1,10 @@
 import React from "react";
-import { deleteReservation, setTable } from "../utils/api";
+import { setTable } from "../utils/api";
 
 export default function Table({table}){
     let key = Math.random() * 1000
     
-    console.log(document.getElementsByClassName(`finish-${table.table_id}`)[0])
-
-    console.log(document.getElementsByClassName("hiddenButton"))
+   
     return(
         <div key={Math.floor(key)}>
             <div>
@@ -52,7 +50,6 @@ export default function Table({table}){
 async function handleClick(event){
     event.preventDefault();
     setTable(event.target.id, null)
-    deleteReservation(event.target.value)
     window.location.reload()
 
 }
