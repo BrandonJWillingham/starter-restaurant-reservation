@@ -3,23 +3,30 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    
-    
+    height: fit-content;
 }
 
 .ReservationCss{
+    height: 100px;
     display: flex;
-    /* justify-content: center; */
-    /* flex-direction: column; */
+    border-style:groove;
+    border-radius: 5px;
+    padding-bottom: px;
+}
+
+.middle{
+    display: flex;
+    justify-content: space-around;
 }
 
 .top{
     align-content: center;
-    justify-content: center;
-    justify-items: center;
-    /* align-self: center; */
+    justify-content: space-between;
+    justify-items: sp ;
 }
 
 .bottom{
-    align-content: center;
+    height: 33%;
+    display: flex;
+    justify-content: center;
 }

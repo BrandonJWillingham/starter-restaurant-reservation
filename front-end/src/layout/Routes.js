@@ -7,6 +7,7 @@ import { today } from "../utils/date-time";
 import NewReservation from "../newReservation/NewReservation"
 import Seating from "./Seating";
 import Search from "../dashboard/Search";
+import EditReservation from "../dashboard/EditReservation";
 /**
  * Defines all the routes for the application.
  *
@@ -26,10 +27,13 @@ function Switch() {
       <Route exact={true} path="/reservations/new" element={<NewReservation  date={today()}/>}/>
 
       <Route exact path={`/reservations/:reservation_id/seat`} element={<Seating/>}/>
+
+      <Route exact path={`/reservations/:reservation_id/edit`} element={<EditReservation/>}/>
       
       <Route path="/dashboard" element={<Dashboard date={today()} />}/>
       
       <Route path="/search" element={<Search/>} />
+      
       
       <Route element={<NotFound />}/>
 

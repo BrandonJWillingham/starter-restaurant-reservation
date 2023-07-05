@@ -22,7 +22,17 @@ function Dashboard() {
   } else{
     date = queryParams
   }
-  
+ const gettingHeader = (date) =>{
+
+  // const forDate = date.split("-")
+  const thebigone = new Date(`${date}T00:00:00`) 
+  const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const monthNames =["January", "Feburary", "March", "April","May", "June", "July", "August", "September","October","November","December"]
+  const header = [dayNames[thebigone.getDay()],monthNames[thebigone.getMonth()-1], thebigone.getDate()]
+  // console.log(thebigone,date)
+  return header
+ }
+ gettingHeader(date)
   const [tables,setTables] = useState([])
   const [tablesError,setTablesError] = useState(null)
   const [reservations, setReservations] = useState([]);
@@ -48,8 +58,7 @@ function Dashboard() {
       <h1>Dashboard</h1>
 
       <div className="d-md-flex mb-3">
-        <h4 className="mb-0">Reservations for </h4>
-        <h4 className="mb-0"> {":  "+date} </h4>
+        <h4 className="mb-0"> { gettingHeader(date)[0] + " " + gettingHeader(date)[1] + " " + gettingHeader(date)[2] } </h4>
       </div>
 
       <ErrorAlert error={reservationsError} />

@@ -15,11 +15,15 @@ function read(id){
 function listAll(){
     return knex("reservations")
 }
+function update(id,reservation){
+    return knex("reservations").where("reservation_id",id).update(reservation)
+}
 
 module.exports = {
     create,
     list,
     destroy,
     read,
+    update,
     listAll,
 }

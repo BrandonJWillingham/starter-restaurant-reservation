@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Layout.css"
 
 /**
  * Defines the menu for this application.
@@ -8,20 +9,30 @@ import { Link } from "react-router-dom";
  */
 
 function Menu() {
+const onClick = (event)=>{
+  console.log("testing")
+  event.target.classList.toggle("is-active")
+  const dropdown = document.getElementsByClassName("nav")
+  dropdown[0].classList.toggle("disappear")
+  // console.log(dropdown[0],event.target)
+  // dropdown.classList.toggle("disappear")
+}
+
   return (
     <nav className="navbar navbar-dark align-items-start p-0">
       <div className="container-fluid d-flex flex-column p-0">
-        <Link
-          className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
-          to="/"
+        <div
+          className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0 navTop"
         >
           <div className="sidebar-brand-text mx-3">
             <span>Periodic Tables </span>
           </div>
-          <ion-icon name="menu-outline"/>
-        </Link>
-        <hr className="sidebar-divider my-0" />
-        <ul className="nav navbar-nav text-light" id="accordionSidebar">
+          <button onClick={onClick} className="stack">
+            <div className="bar"></div>
+          </button>
+        </div>
+        {/* <hr className="sidebar-divider my-0" /> */}
+        <ul className="nav navbar-nav text-light list" id="accordionSidebar">
           <li className="nav-item">
             <Link className="nav-link" to="/dashboard">
               <span className="oi oi-dashboard" />
@@ -47,20 +58,20 @@ function Menu() {
             </Link>
           </li>
 
-          <li>
-            <Link className="nav-item" to="/all">
+          <li className="nav-item">
+            <Link className="nav-link" to="/all">
               <span className="oi oi-list"/>
               &nbsp;All
             </Link>
           </li>
         </ul>
-        <div className="text-center d-none d-md-inline">
+        {/* <div className="text-center d-none d-md-inline">
           <button
             className="btn rounded-circle border-0"
             id="sidebarToggle"
             type="button"
           />
-        </div>
+        </div> */}
       </div>
     </nav>
   );

@@ -123,3 +123,8 @@ export async function listMatchedReservations(queryParams){
   const matched = response.filter( (res) =>{ return res.mobile_number == queryParams})
   return matched
 }
+
+export async function updateReservation(reservation){
+  const url = `${API_BASE_URL}/reservations/${reservation.reservation_id}`
+  await fetchJson(url,({method:"PUT", headers,body:JSON.stringify({data: reservation})}))
+}

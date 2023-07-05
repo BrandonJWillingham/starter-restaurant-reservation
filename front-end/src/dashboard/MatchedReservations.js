@@ -8,5 +8,10 @@ export default function MatchedReservations({reservation}){
             <div>
                 {"at " + reservation.reservation_time + " " + reservation.reservation_date}
             </div>
+            <a href={`/reservations/${reservation.reservation_id}/edit`} >
+                <button>
+                    Edit
+                </button>
+             </a>
         </div>)
 }

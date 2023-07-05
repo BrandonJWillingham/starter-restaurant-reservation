@@ -59,10 +59,17 @@ async function create(req,res, next){
   res.status(201).json({newReservaiton})
 }
 
+async function update(req,res){
+  const {data = {}} = req.body
+  console.log(data)
+  await service.update(req.params.id,data)
+}
+
 module.exports = {
   list,
   destroy,
   // create: [hasNonNullables,create],
   create,
   read,
+  update,
 };

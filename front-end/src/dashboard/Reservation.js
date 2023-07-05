@@ -17,14 +17,21 @@ export default function Reservation({r,tables}){
                         Delete
                     </button>
                 </div>
+                <div className="middle">
+                   <span>{r.reservation_time}</span>
+                    <span>{"   " + r.reservation_date}</span>
+                </div>
                 <div className="bottom">
-                    {r.reservation_time}
-                    {"   " + r.reservation_date}
-                        <a href={`/reservations/${r.reservation_id}/seat`}>
+                <a href={`/reservations/${r.reservation_id}/seat`}>
                            <button>
                                 {seated ? "seated" : "seat"}
                            </button>
-                           
+                        </a>
+                        
+                        <a href={`/reservations/${r.reservation_id}/edit`} >
+                            <button>
+                                Edit
+                            </button>
                         </a>
                 </div>
             </div>
