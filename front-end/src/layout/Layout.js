@@ -1,7 +1,7 @@
 import React from "react";
 import Menu from "./Menu";
-import Switch from "./Routes";
-import { Route,Routes } from "react-router-dom";
+import Switch from "./Switch";
+import { Route,Routes, useLocation } from "react-router-dom";
 
 import "./Layout.css";
 
@@ -13,15 +13,28 @@ import "./Layout.css";
  * @returns {JSX.Element}
  */
 function Layout() {
+
+  const location = useLocation().pathname.split("/")[1].split("")
+  let capLet 
+  location[0] == undefined ? capLet = "D"  : capLet = location[0].toUpperCase() 
+  location.splice(0,1,capLet)
+
   return (
     <div className="container-fluid p-0">
-      <div className="h-100">
-        <div className="col-md-2 testing ">
-          <Menu />
+      <div className="">
+        <div className="d-flex testing ">
+          <div className="w-25">
+            <Menu/>
+          </div>
+
+          <div className="googlines">
+            <h2 className="m-0">{location.join("")}</h2>
+          </div>
+          
         </div>
-        <div className="col">
+        
+        <div className="col padding-0">
             <Switch />
-           
         </div>
       </div>
     </div>

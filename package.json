@@ -50,5 +50,8 @@
   "license": "UNLICENSED",
   "dependencies": {
     "react-icons": "^4.4.0"
+  },
+  "devDependencies": {
+    "@iconify/react": "^4.1.1"
   }
 }

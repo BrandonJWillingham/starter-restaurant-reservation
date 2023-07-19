@@ -4,14 +4,28 @@
     justify-content: center;
     flex-direction: column;
     height: fit-content;
+    background: none;
 }
-
+.delete-button, .delete-button:focus{
+    transition: 0.3s;
+    background:none;
+    border: none;
+    outline: none;
+}
+.delete-button:hover{
+    color:white
+}
 .ReservationCss{
-    height: 100px;
+    
+    background-color: lightblue;
+    height: fit-content;
     display: flex;
     border-style:groove;
     border-radius: 5px;
-    padding-bottom: px;
+    box-shadow: 2px  2px  5px #000000;
+}
+.space {
+    padding-bottom: 10px;
 }
 
 .middle{
@@ -23,6 +37,28 @@
     align-content: center;
     justify-content: space-between;
     justify-items: sp ;
+}
+
+.editBtn{
+    border: solid;
+    border-width: 2px;
+    border-color: lightblue;
+    border-radius: 10px;
+    background-color: lightblue;
+    transition: .3s;
+}
+
+.seatBtn{
+    border: solid;
+    border-width: 2px;
+    border-color: lightblue;
+    border-radius: 10px;
+    background-color: lightblue;
+    transition: .3s;
+
+}
+.seatBtn:hover , .editBtn:hover { 
+    color:white;
 }
 
 .bottom{

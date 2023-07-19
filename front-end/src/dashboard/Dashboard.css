@@ -1,5 +1,30 @@
 .Res_Table_div{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.dashboardTable{
+    box-shadow: 2px  2px  5px #000000;
+    background-color: rgba(18, 160, 160, 0.833);
+    margin-bottom: 10px;
+    min-width: 175px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bottomTable{
+    display: flex;
+    color: white;
+    flex-direction: row;
+}
+
+.bottomTable button{
+    background:none;
+    border: none;
+    outline: none;
+    transition: .4s;
+}
+.bottomTable button:hover{
+    color:white;
 }

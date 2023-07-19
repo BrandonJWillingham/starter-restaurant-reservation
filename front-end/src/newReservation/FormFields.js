@@ -2,16 +2,10 @@ import React,{useState} from "react";
 import { createReservation } from "../utils/api";
 import "./NewReservations.css"
 import "./formFields.css"
-import {today} from "../utils/date-time"
 import {useNavigate} from "react-router-dom"
-import ErrorAlert from "../layout/ErrorAlert";
 
 export default function NewReservations({setErrors,errors}){
     const navigate = useNavigate();
-    let catching = {message: "", time: "",date: ""};
-    const td = today()
-    
-
 
     const initalFormState = {
         first_name: "",
@@ -50,9 +44,6 @@ export default function NewReservations({setErrors,errors}){
         let day = d.getDay()
         let today = new Date()
 
-        // console.log("today : ", today.a(), " d: ", d.valueOf())
-
-
         if(day == 2){
             setErrors({
                 ...errors,
@@ -68,53 +59,43 @@ export default function NewReservations({setErrors,errors}){
             .then(()=>navigate(`/dashboard?date=${formData.reservation_date}`))
         }
     }
-    console.log(catching.message)
+
     return (
-        <div>
-            <form>  
-
-                <div className="name_fields">
-                    <div>
-                        <label htmlFor="first_name">
-                            Your First Name
-                            <input  id="first_name" name="first_name" type="text"  onChange={onChange} value={formData.first_name} />
-                        </label>
-                    </div>
-
-                    <div>
-                        <label htmlFor="last_name">
-                            Your Last Name
-                            <input id="last_name" name="last_name" type="text" onChange={onChange} value={formData.last_name} />
-                        </label>
-                    </div>
-
+        <div className="d-flex justify-content-center">
+            <form className=" d-flex flex-column formCSS" style={{marginTop:100 , width:500}}>  
+                <div  style={{marginBottom: 10}}>
+                    <label className="d-flex justify-content-between" style={{margin:0}}htmlFor="first_name">
+                    <p className="align-self-center" style={{margin:0}}>First Name</p>
+                        <input  id="first_name" name="first_name" type="text"  style={{borderRadius:20, paddingLeft:20, borderWidth:1}} onChange={onChange} value={formData.first_name} />
+                    </label>
                 </div>
+                <div style={{marginBottom: 10}}>
+                    <label className="d-flex justify-content-between" style={{margin:0}} htmlFor="last_name">
+                    <p className="align-self-center" style={{margin:0}}>Last Name</p>
+                        <input id="last_name" name="last_name" type="text" style={{borderRadius:20, paddingLeft:20, borderWidth:1}}  onChange={onChange} value={formData.last_name} />
+                    </label>
+                </div>
+            
 
-
-                <div>
-                    <label htmlFor="mobile_number">
-                        Mobile Number
-                        <input id="mobile_number" name="mobile_number" type="number" onChange={onChange} value={formData.mobile_number} />
+                <div style={{marginBottom: 10}}>
+                    <label className="d-flex justify-content-between" style={{margin:0}} htmlFor="mobile_number">
+                    <p className="align-self-center" style={{margin:0}}>Number</p>
+                        <input id="mobile_number" name="mobile_number" type="number" style={{borderRadius:20, paddingLeft:20, borderWidth:1}}  onChange={onChange} value={formData.mobile_number} />
                     </label>
                 </div>
 
-                <div>
+                <div style={{}} className="d-flex justify-content-between" >
                     <label htmlFor="reservation_date">
-                        Date
                         <input id="reservation_date" name="reservation_date" type="date" onChange={onChange} value={formData.reservation_date}/>
                     </label>
-                </div>
-
-                <div>
-                    <label htmlFor="reservation_time">
-                        Time
+                    <label htmlFor="reservation_time" className="d-flex">
+                    <p className="align-self-center" style={{padding:0,margin:0}}>at </p>
+                        <span style={{width:5}}/>
                         <input id="reservation_time" name="reservation_time" type="time" onChange={onChange} value={formData.reservation_time}/>
                     </label>
-                </div>
-
-                <div>
-                    <label htmlFor="people">
-                        <div>Party Size: </div>
+                    <label htmlFor="people" className="d-flex">
+                        <p className="align-self-center" style={{margin:0}}>with </p>
+                        <span style={{width:5}}/>
                         <select id="people" name="people" type="" onChange={onChange} value={formData.people}>
                             <option value="1" label="1 Guest"/>
                             <option value="2" label="2 Guests"/>
@@ -126,9 +107,13 @@ export default function NewReservations({setErrors,errors}){
                         </select>
                     </label>
                 </div>
+                <div className="d-flex justify-content-end">
+                    <button className="btn" onClick={onSubmit}> <p>Submit</p></button>
+                    <span style={{width:25}}/>
+                    <button className="btn" onClick={onCancel}> <p>Cancel</p> </button>
+                </div>
+    
                 
-                <button onClick={onSubmit}> Submit</button>
-                <button onClick={onCancel}> Cancel </button>
             </form> 
         </div>
     )

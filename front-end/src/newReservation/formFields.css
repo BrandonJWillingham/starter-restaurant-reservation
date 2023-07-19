@@ -3,3 +3,45 @@
     flex-direction: row;
     
 }
+
+.formCSS{
+    border: solid;
+    border-radius: 20px;
+    box-shadow: 5px 10px 20px 1px;
+    border-width: 1px;
+    padding: 30px 20px 10px 20px;
+    
+    background-color: #BAD1CD;
+}
+.formCSS input,select{
+    transition: .4s;
+    border-radius: 10px;
+}
+.btn p {
+    margin-bottom:0px;
+    color: white;
+    transition:.2s
+}
+.btn p:hover{
+    color:#F2D1C9
+}
+.btn{
+    border: solid;
+    border-width: 2px;
+    color:white; 
+    border-color:#BAD1CD;
+    border-radius: 10px;
+    background-color: #BAD1CD;
+    transition: .3s;
+}
+
+
+
+.formCSS input:focus, select:focus,input:hover,select:hover{
+    background-color: #c2d9d5;
+    outline:none;
+    text-decoration: none;
+}
+.formCSS label p{
+    color:white
+}

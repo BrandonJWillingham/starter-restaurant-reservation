@@ -26,23 +26,33 @@ export default function Table(){
         })
     }
     
-    return (<main>
-        <form>
-            <label htmlFor="table_name">
-                table_name
-                <input name="table_name" id="table_name" value={forms.table_name} onChange={handleChange} required/>
-            </label>
+    return (<main className="d-flex flex-column justify-content-center">
+        <span style={{height:100}}/>
+        <div className="d-flex justify-content-center  ">
+            <form className="d-flex flex-column tableForm">
 
-            <label>
-                capacity
-               <input name="capacity" value={forms.capacity} onChange={handleChange} required/>
-            </label>
-            <button onClick={handleSubmit}>
-                Submit
-            </button>
-            <button onClick={handleCancel}>
-                Cancel
-            </button>
-        </form>
+                <label htmlFor="table_name" className="d-flex  m-0 pt-2 pb-2 justify-content-between">
+                    <p className="align-self-center m-0">Table name</p>
+                    <input name="table_name" id="table_name" value={forms.table_name} onChange={handleChange} required/>
+                </label>
+
+                <label className="d-flex m-0 m-0 pt-2 pb-2 justify-content-between" >
+                    <p className="align-self-center m-0">Capacity</p>
+                <input name="capacity" value={forms.capacity} onChange={handleChange} required/>
+                </label>
+
+
+                <div className="d-flex m-0 pt-2 pb-2 justify-content-end" >
+                    <button style={{margin:0}} onClick={handleSubmit} >
+                        <p style={{margin:0}}>Submit</p>
+                    </button>
+                    <span style={{width:25}}/>
+                    <button onClick={handleCancel}>
+                        <p style={{margin:0}}>Cancel</p>
+                    </button>
+                </div>
+            </form>
+        </div>
+        
     </main>)
 }

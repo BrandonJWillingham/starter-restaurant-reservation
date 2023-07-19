@@ -5,6 +5,7 @@ import Reservation from "./Reservation";
 import Table from "./Tables";
 import sortByDate from "../utils/sortByDate";
 import { today } from "../utils/date-time";
+import { gettingHeader } from "../utils/date-time";
 import "./Dashboard.css"
 
 
@@ -22,17 +23,7 @@ function Dashboard() {
   } else{
     date = queryParams
   }
- const gettingHeader = (date) =>{
-
-  // const forDate = date.split("-")
-  const thebigone = new Date(`${date}T00:00:00`) 
-  const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  const monthNames =["January", "Feburary", "March", "April","May", "June", "July", "August", "September","October","November","December"]
-  const header = [dayNames[thebigone.getDay()],monthNames[thebigone.getMonth()-1], thebigone.getDate()]
-  // console.log(thebigone,date)
-  return header
- }
- gettingHeader(date)
+  const header = gettingHeader(date)
   const [tables,setTables] = useState([])
   const [tablesError,setTablesError] = useState(null)
   const [reservations, setReservations] = useState([]);
@@ -55,28 +46,29 @@ function Dashboard() {
 
   return (
     <main>
-      <h1>Dashboard</h1>
+        <div className=" d-flex justify-content-center align-items-center p-0">
+          <h3 className="m-0"> { header[0] + " " + header[1] + " " + header[2] } </h3>
+        </div>
 
-      <div className="d-md-flex mb-3">
-        <h4 className="mb-0"> { gettingHeader(date)[0] + " " + gettingHeader(date)[1] + " " + gettingHeader(date)[2] } </h4>
-      </div>
+      
 
       <ErrorAlert error={reservationsError} />
       <ErrorAlert error={tablesError}/>
      <div className="Res_Table_div">
-      
-      <div>
-        <h3>
-          Reservations
-        </h3>
-        {reservations.map((r,key) => <Reservation r={r} tables={tables} key={key} />)}
-      </div>
-      <div>
-        <h3>
-          Tables:
-        </h3>
-        {tables.map((table,key)=> <Table table={table} key={key} />)}
-      </div>
+        <div className="col-md-5">
+            <h3>
+              Reservations
+            </h3>
+            <hr/>
+          {reservations.map((r,key) => <Reservation r={r} tables={tables} key={key} />)}
+        </div>
+        <div>
+            <h3>
+              Tables
+            </h3>
+            <hr/>
+            {tables.map((table,key)=> <Table table={table} key={key} />)}
+        </div>
      </div>
 
     </main>

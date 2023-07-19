@@ -1,0 +1,28 @@
+.ReservationCss{
+    margin-top: 15px;
+    padding: 0;
+    width: 100%;
+    background-color: lightblue;
+    height: fit-content;
+    flex-direction: column;
+    display: flex;
+    border-style:groove;
+    border-radius: 5px;
+    box-shadow: 2px  2px  5px #000000;
+    
+}
+
+
+.editBtn{
+    border: solid;
+    border-width: 2px;
+    border-color: lightblue;
+    border-radius: 10px;
+    background-color: lightblue;
+    transition: .3s;
+}
+
+
+.editBtn:hover { 
+    color:white;
+}

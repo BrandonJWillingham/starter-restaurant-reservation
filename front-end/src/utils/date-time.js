@@ -18,6 +18,14 @@ function asDateString(date) {
     .padStart(2, "0")}-${date.getDate().toString(10).padStart(2, "0")}`;
 }
 
+export const gettingHeader = (date) =>{
+  const thebigone = new Date(`${date}T00:00:00`) 
+  const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const monthNames =["January", "Feburary", "March", "April","May", "June", "July", "August", "September","October","November","December"]
+  const header = [dayNames[thebigone.getDay()],monthNames[thebigone.getMonth()], thebigone.getDate()]
+  return header
+ }
+
 /**
  * Format a date string in ISO-8601 format (which is what is returned from PostgreSQL) as YYYY-MM-DD.
  * @param dateString

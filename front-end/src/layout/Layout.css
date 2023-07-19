@@ -2,7 +2,9 @@
   background-color: #393a44;
   min-width: 200px;
 }
-
+.testing h2{
+  color: rgb(153, 152, 152);
+}
 .stack{ 
   position:relative;
   cursor: pointer;
@@ -57,6 +59,10 @@
   margin-left: 0;
 }
 
+#accordionSidebar{
+  border-radius: 0px 0px 10px 10px;
+}
+
 .list{
   z-index: 1;
   position: absolute;
@@ -75,9 +81,109 @@
 
 .disappear{
   align-items: center;
-  transform: translateY(10%);
+  transform: translateY(11.3%);
   visibility: visible;
   /* background-color: grey; */
   opacity: .98;
   display: block;
+}
+.googlines{
+  padding-left: 20%;
+}
+
+.searchBtn{
+  background-color: white;
+  border: solid;
+  border-width: 1px;
+  border-radius: 0 20px 20px 0;
+  transition: .2s;
+}
+
+.searchForm input[name=mobile_number] {
+  border:solid;
+  border-width: 1px;
+  transition: .2s;
+} 
+
+.searchForm .searchBtn{
+  border-left: solid;
+}
+.searchForm input:hover{
+  transition: .5s;
+}
+
+.searchBtn:hover{
+  box-shadow: inset 0px .5px 1px,0px .5px 1px; ;
+  /* box-shadow:  0px .5px 1px; */
+}
+
+.tableForm{
+  box-shadow: 5px 10px 10px 1px;
+  border:solid;
+  padding: 20px 10px 5px 10px;
+  width: 350px;
+  border-radius: 10px;
+  border-width: 1px;
+  background-color: #BAD1CD;
+}
+
+.tableForm input{
+  transition: .2s;
+  padding-left: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+.tableForm input:hover,input:focus{
+  outline: none;
+  background-color: #c2d9d5;
+}
+
+.tableForm button{
+  outline: none;
+  border: none;
+  background-color: #BAD1CD;
+  transition: .3s;
+}
+.tableForm p{
+  color:white;
+  transition: .3s;
+}
+.tableForm button:hover p{
+  color: #F2D1C9;
+}
+
+.editForm{
+  background-color: #BAD1CD;
+  border:solid;
+  border-radius: 15px;
+  box-shadow: 5px 10px 10px 1px;
+}
+.editForm input{
+  transition: .4s;
+  
+}
+.editForm input[name=first_name]{
+  
+  padding-left: 10px;
+  border-radius: 15px 0px 0px 15px;
+  border-width: 1px;
+}
+.editForm input[name=last_name]{
+  border-radius: 0px 15px 15px 0px;
+  border-width: 1px;
+}
+.editForm input[name=mobile_number], input[name=reservation_date],input[name=reservation_time]{
+  border-radius: 15px 15px 15px 15px ;
+  border-width:1px;
+  padding-left: 10px;
+}
+.editForm button{
+  background-color: #BAD1CD;
+  border:none;
+  color: white;
+  transition: .4s;
+}
+.editForm button:hover{
+  color:#F2D1C9
 }

@@ -32,26 +32,18 @@ export default function EditReservation(){
         navigate(`/dashboard?date=${reservation.reservation_date}`)
     }
 
-    return (<>
-        <form>
-            <div>
-                <label htmlFor="first_name">
-                    First Name:
-                    <input name="first_name" type="text" value={reservation.first_name} onChange={onChange} />
-                </label>
-                <label htmlFor="last_name">
-                    Last Name:
-                    <input type="text" value={reservation.last_name} name="last_name" onChange={onChange}  />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Mobile number:
-                    <input type="text" value={reservation.mobile_number} name="mobile_number" onChange={onChange} />
-                </label>
-                <label htmlFor="people">
-                        <div>Party Size: </div>
-                        <select id="people" name="people" type="" onChange={onChange} value={reservation.people}>
+    return (
+    <div className="d-flex justify-content-center flex-column">
+        <span style={{height:100}}/>
+        <div className="d-flex justify-content-center ">
+        <div className="editForm">
+        <form className="d-flex flex-column " style={{width:500,paddingLeft:15,paddingRight:15, paddingTop:25,paddingBottom:25}}>
+            <div className="d-flex justify-content-between" style={{paddingTop:5,paddingBottom:5}}>
+                <div>
+                    <input name="first_name" style={{width:100}} type="text" value={reservation.first_name} onChange={onChange} />  
+                    <input type="text" style={{width:100}} value={reservation.last_name} name="last_name" onChange={onChange}  />
+                </div>
+                <select id="people" name="people" type="" style={{}}onChange={onChange} value={reservation.people}>
                             <option value="1" label="1 Guest"/>
                             <option value="2" label="2 Guests"/>
                             <option value="3" label="3 Guests"/>
@@ -59,25 +51,24 @@ export default function EditReservation(){
                             <option value="5" label="5 Guests"/>
                             <option value="6" label="6 Guests"/>
                             <option value="7" label="7 Guests"/>
-                        </select>
-                    </label>
+                </select>
+            </div>
+            <div style={{paddingTop:5,paddingBottom:5}}>
+                <input type="text" value={reservation.mobile_number} name="mobile_number" onChange={onChange} />    
             </div>
 
-            <div>
-                <label>
-                    Reservation Date:
-                    <input type="text" value={reservation.reservation_date} onChange={onChange} name="reservation_date"/>
-                </label>
-
-                <label htmlFor="reservation_time">
-                        Reservation Time:
-                        <input id="reservation_time" name="reservation_time" type="time" onChange={onChange} value={reservation.reservation_time}/>
-                    </label>
+            <div className=" d-flex justify-content-between" style={{paddingTop:5,paddingBottom:5}}>  
+                <input type="text" value={reservation.reservation_date} onChange={onChange} name="reservation_date"/>
+                <input id="reservation_time" name="reservation_time" type="time" onChange={onChange} value={reservation.reservation_time}/> 
             </div>
 
             <button onClick={handleSubmit}>
                 Change
             </button>
         </form>
-    </>)
+        </div>
+        
+        </div>
+       
+    </div>)
 }

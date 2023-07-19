@@ -4,7 +4,6 @@
  */
 import formatReservationDate from "./format-reservation-date";
 import formatReservationTime from "./format-reservation-date";
-import {today} from "./date-time"
 
 const API_BASE_URL =
   process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
@@ -99,8 +98,7 @@ export async function createTable(table,signal){
 
 export async function deleteReservation(reservationId){
   const url = `${API_BASE_URL}/reservations/${reservationId}`;
-  // console.log("api called with url: ", url)
-  const response = await fetch(url,({method: "DELETE", headers: {"Content-type":'application/json'}}));
+  await fetch(url,({method: "DELETE", headers: {"Content-type":'application/json'}}));
 }
 export async function listTables(signal){
   const url = `${API_BASE_URL}/tables/`
@@ -120,7 +118,7 @@ export async function setTable(table_id,reservation_id){
 export async function listMatchedReservations(queryParams){
   const url= `${API_BASE_URL}/reservations`
   const response =  await fetchJson(url,{headers})
-  const matched = response.filter( (res) =>{ return res.mobile_number == queryParams})
+  const matched = response.filter( (res) =>{ return res.mobile_number === queryParams})
   return matched
 }
 
