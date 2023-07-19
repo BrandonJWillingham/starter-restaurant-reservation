@@ -18,5 +18,5 @@ knex
 postgreSQL
 dbever
 
-<div><img src="./markdown-images/Drop down.png"/></div>
+<div style={{display:flex}}><img src="./markdown-images/Drop down.png"/><img src="./markdown-images/dashboard.png"/></div>
 ![](./markdown-images/dashboard.png)
