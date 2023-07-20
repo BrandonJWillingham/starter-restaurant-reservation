@@ -28,7 +28,7 @@ You can view, delete, edit, or seat reservations and asign reservations to a tab
 <hr/>
 Query reservations by mobile number
 <img src="./markdown-images/search-SS.png"/>
-<img src="./markdown-images/data.png"/>
+<img src="./markdown-images/Data.png"/>
 
 <hr/>
 Create new Reservations and new tables for your resturant 
