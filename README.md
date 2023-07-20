@@ -16,50 +16,9 @@ expresss,
 knex,
 postgreSQL,
 dbever
- 
-<hr/>
-Practiced implimenting animations with clickables and an animated drop down menu. 
-You can view, delete, edit, or seat reservations and asign reservations to a table or clear the table and delete the reservation
-<style>
-    container{
-        display:flex;
-        flex-direction:row;
-    }
-    spacer{
-        width:500px
-    }
-</style>
-<container> 
-    <div >
-    <img src="./markdown-images/Drop down.png"/>
-    </div>
-    <spacer ></spacer>
-    <div>
-    <img src="./markdown-images/dashboard.png"/>
-    </div>
-</container>
 
-<container>
-    <div>
-        <img src="./markdown-images/seating.png"/>
-    </div>
-    <spacer> </spacer>
-    <div>
-        <img src="./markdown-images/Seated.png"/>
-    </div>
-</container>
-
-<hr/>
-Query reservations by mobile number
-<container>
-    <div>
-    <img src="./markdown-images/search ss.png"/>
-    </div>
-    <spacer> </spacer>
-    <div>
-    <img src="./markdown-images/data.png"/>
-    </div>
-</container>
+<div><img src="./markdown-images/Drop down.png"/></div>
+![](./markdown-images/dashboard.png)
 
 <hr/>
 Create new Reservations and new tables for your resturant 
