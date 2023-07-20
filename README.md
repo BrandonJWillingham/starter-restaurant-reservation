@@ -21,6 +21,20 @@ dbever
 <hr/>
 Practiced implimenting animations with clickables and an animated drop down menu. 
 You can view, delete, edit, or seat reservations and asign reservations to a table or clear the table and delete the reservation
+
+<img src="./markdown-images/Drop down.png"/>
+<img src="./markdown-images/dashboard.png"/>
+
+<hr/>
+Query reservations by mobile number
+<img src="./markdown-images/search ss.png"/>
+<img src="./markdown-images/data.png"/>
+
+<hr/>
+Create new Reservations and new tables for your resturant 
+<img src="./markdown-images/new reservation.png"/>
+<img src="./markdown-images/new table.png"/>
+<!-- 
 <style>
     container{
         display:flex;
@@ -72,4 +86,4 @@ Create new Reservations and new tables for your resturant
     <div>
     <img src="./markdown-images/new table.png"/>
     </div>
-</container>
+</container> -->
