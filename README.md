@@ -19,7 +19,7 @@ dbever
  
 <hr/>
 Practiced implimenting animations with clickables and an animated drop down menu. 
-You can view, delete, edit, or seat guest associated with reservations
+You can view, delete, edit, or seat reservations and asign reservations to a table or clear the table and delete the reservation
 <style>
     container{
         display:flex;
@@ -62,7 +62,7 @@ Query reservations by mobile number
 </container>
 
 <hr/>
-Create new Reservations and New tables for your resturant 
+Create new Reservations and new tables for your resturant 
 <container>
     <div>
     <img src="./markdown-images/new reservation.png"/>
