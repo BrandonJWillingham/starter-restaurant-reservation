@@ -187,3 +187,30 @@
 .editForm button:hover{
   color:#F2D1C9
 }
+
+.seating{
+  display: flex;
+  justify-content: center;
+  
+}
+.seating form{
+  border: solid;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 10px 10px 1px;
+  background-color: #BAD1CD;
+}
+
+.seating p{
+  margin:0;
+  color:white;
+}
+.seating button{
+  background-color: #BAD1CD;
+  border:none;
+  color: white;
+  transition: .4s;
+}
+.seating button:hover{
+  color:#F2D1C9
+}

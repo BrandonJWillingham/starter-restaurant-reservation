@@ -43,28 +43,39 @@ export default function Seating(){
 
     let makeList = (table)=>{
       if(table.capacity >= reservation.people){
-        return <option value={table.table_id}>{table.table_name} - {table.capacity}</option>
+        return <option value={table.table_id}>{table.table_name} - {"cap: " +table.capacity}</option>
       } else{
         return 
       }
     }
 
-    return (<main>
-        <form>
-            <label htmlFor="table_number">
-                table_name
-               <select name="table_id" id="table_id">
-                {tables.map(makeList)}
-                </select>
-            </label>
-            <button onClick={handleSubmit}>
-                Submit
-            </button>
-            <button onClick={handleCancel}>
-                Cancel
-            </button>
+    return (
+    <div className="d-flex flex-column">
+      <span style={{height:100}}/>
+      <div className="seating">
+        <form className="">
+          <div className="d-flex flex-row">
+            <p>Table Name</p>
+            <span style={{width:10}}/>
+            <select name="table_id" id="table_id">
+            {tables.map(makeList)}
+            </select>
+          </div>
+              
+           
+            <div className="d-flex justify-content-end">
+                <button onClick={handleSubmit}>
+                  <p>Seat</p>
+              </button>
+              <button onClick={handleCancel}>
+                  <p>Cancel</p>
+              </button>
+            </div>
+            
         </form>
-    </main>)
+      </div>
+        
+    </div>)
 
     
 }

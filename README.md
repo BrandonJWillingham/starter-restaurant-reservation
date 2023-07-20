@@ -6,17 +6,69 @@ The objective is to create a web app that stores and manages reservations for a 
 I am practicing my abilities to CRUD data from a database in a practical way for buisnesses 
 
 Tech utilitzed for this project:
-
-JS
-HTML
-CSS
-React
-bootsrap
-node.js
-expresss
-knex
-postgreSQL
+JS,
+HTML,
+CSS,
+React,
+bootsrap,
+node.js,
+expresss,
+knex,
+postgreSQL,
 dbever
+ 
+<hr/>
+Practiced implimenting animations with clickables and an animated drop down menu. 
+You can view, delete, edit, or seat guest associated with reservations
+<style>
+    container{
+        display:flex;
+        flex-direction:row;
+    }
+    spacer{
+        width:500px
+    }
+</style>
+<container> 
+    <div >
+    <img src="./markdown-images/Drop down.png"/>
+    </div>
+    <spacer ></spacer>
+    <div>
+    <img src="./markdown-images/dashboard.png"/>
+    </div>
+</container>
 
-<div><img src="./markdown-images/Drop down.png"/></div>
-![](./markdown-images/dashboard.png)
+<container>
+    <div>
+        <img src="./markdown-images/seating.png"/>
+    </div>
+    <spacer> </spacer>
+    <div>
+        <img src="./markdown-images/Seated.png"/>
+    </div>
+</container>
+
+<hr/>
+Query reservations by mobile number
+<container>
+    <div>
+    <img src="./markdown-images/search ss.png"/>
+    </div>
+    <spacer> </spacer>
+    <div>
+    <img src="./markdown-images/data.png"/>
+    </div>
+</container>
+
+<hr/>
+Create new Reservations and New tables for your resturant 
+<container>
+    <div>
+    <img src="./markdown-images/new reservation.png"/>
+    </div>
+    <spacer> </spacer>
+    <div>
+    <img src="./markdown-images/new table.png"/>
+    </div>
+</container>
